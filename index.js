@@ -4,7 +4,7 @@ const port = 3000
 //TODO Mongoose przerzucic do osobnego pliku!!!
 const mongoose = require('mongoose');
 
-var mongoDB = 'mongodb://konrad:haslo123@ds247330.mlab.com:47330/ksiegarnia';
+//trzeba podać własną bazę
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
