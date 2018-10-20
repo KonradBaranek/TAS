@@ -4,22 +4,13 @@ var Schema = mongoose.Schema;
 
 var AuthorSchema = new Schema(
   {
-    first_name: {type: String, required: true, max: 100},
-    family_name: {type: String, required: true, max: 100},
-    date_of_birth: {type: Date},
-    date_of_death: {type: Date},
+    name: {type: String, required: true, max: 100},
+    surname: {type: String, required: true, max: 100},
+    dateOfBirth: {type: Date},
+    dateOfDeath: {type: Date},
+    descritpion: {type: String, required: false}
   }
-);
-
-
-AuthorSchema
-.virtual('name')
-.get(() =>  this.family_name + ', ' + this.first_name)
-
-
-AuthorSchema
-.virtual('lifespan')
-.get(() => (this.date_of_death.getYear() - this.date_of_birth.getYear()).toString())
+)
 
 
 module.exports = mongoose.model('Author', AuthorSchema);

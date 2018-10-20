@@ -3,9 +3,9 @@ const app = express()
 const bodyParser = require('body-parser')
 const port = 3000
 
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://tas:tas123@ds131753.mlab.com:31753/tasy')
+const mongoose = require('mongoose')
+//Zajrzyjcie do pliku db.js tam wpiszcie link do bazy
+mongoose.connect(require('./db'))
 mongoose.Promise = global.Promise
 
 var db = mongoose.connection

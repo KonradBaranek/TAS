@@ -3,15 +3,15 @@ var Schema = mongoose.Schema;
 
 var BookSchema = new Schema(
   {
-    isbn: {type: String, required: true},
+    isbn: {type: Number, required: true},
     title: {type: String, required: true},
-    authors: {type: [number], required: false},
+    authors: {type: [Number], required: false},
     cover: {type: String, required: false},
-    price: {type: number, required: true},
+    price: {type: Number, required: true},
     description: {type: String, required: false},
     genre: {type: String,  enum: ["fantasy","mystery","romance","thriller","drama","adventure"],  required: false},
-    year: {type: number, required: false},
-    amount: {type: number, required: true}
+    year: {type: Number, required: false},
+    amount: {type: Number, required: true}
   }
 );
 

@@ -13,16 +13,8 @@ var UserSchema = new Schema(
     phone: {type: Number, required: true},
     address: {type: String, required: true},
     access: {type: String, enum:["user","admin"], required: true},
-    IDOrders: {type: Number, required: true}
+    IDOrders: {type: [Number], required: false}
   }
-);
+)
 
-// Virtual for book's URL
-BookSchema
-.virtual('url')
-.get(function () {
-  return '/catalog/book/' + this._id;
-});
-
-//Export model
-module.exports = mongoose.model('Book', BookSchema);
+module.exports = mongoose.model('User', UserSchema)
