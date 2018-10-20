@@ -15,5 +15,15 @@ var BookSchema = new Schema(
   }
 );
 
+BookSchema.methods.add = function (){
+  this.findOne({isbn: this.isbn}).then( book =>{
+    if(book){
+      console.log(`Book with isbn: ${this.isbn} already exists`)
+    }else{
+      this.create(this)
+    }
+  })
+}
+
 //Export model
 module.exports = mongoose.model('Book', BookSchema);
