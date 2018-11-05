@@ -13,4 +13,14 @@ router.post('/books', function(req, res, next){
     });
 });
 
+router.get('/books', function(req, res, next){
+    Book.find({}).then(function(books){
+        if(books.length === 0){
+            res.status(404).send({error: 'Error: There is no books'})
+        }else{
+            res.status(200).send(books);
+        }
+    });
+});
+
 module.exports = router;

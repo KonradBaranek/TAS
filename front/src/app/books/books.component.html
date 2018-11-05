@@ -1,3 +1,26 @@
-<p>
-  books works!
-</p>
+<div class="container my-2 mx-auto">
+  <div class="row">
+    <div *ngFor="let book of books" class="col-md-4 box-shadow my-1">
+      <div class="card">
+        <img style="height: 250px" src="https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png" class="card-img-top">
+        <div class="card-body">
+            <span class="card-text">
+              <h3>
+                {{book.title}}
+              </h3>
+              {{book.description}}
+            </span>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Dodaj do koszyka</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Zobacz</button>
+              </div>
+              <small class="text-muted">{{book.price}} PLN</small>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+  
+  </div> 
+</div>
