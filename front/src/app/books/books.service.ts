@@ -9,6 +9,6 @@ export default class BooksService {
   constructor(private _http: HttpClient) { }
 
   getAllBooks(){
-    return this._http.get("http://localhost:3000/books");
+    return this._http.get("http://localhost:3000/books/list");
   }
 }

@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema(
   {
-    IDUser: {type: Number, required: true},
+    id: {type: Number, required: true},
     login: {type: String, required: true},
     password: {type: String, required: true},
     name: {type: String, required: true},
@@ -15,6 +15,17 @@ var UserSchema = new Schema(
     access: {type: String, enum:["user","admin"], required: true},
     IDOrders: {type: [Number], required: false}
   }
-)
+);
+
+UserSchema.methods.add = function (){
+  this.findOne({id: this.id}).then( user =>{
+    if(user){
+      console.log(`User with this ID: ${this.id} already exists`)
+    } else {
+      this.create(this)
+    }
+  })
+  }
+
 
 module.exports = mongoose.model('User', UserSchema)

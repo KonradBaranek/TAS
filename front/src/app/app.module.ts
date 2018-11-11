@@ -7,6 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactComponent } from './contact/contact.component';
 import { BooksComponent } from './books/books.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ContactComponent,
     BooksComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
