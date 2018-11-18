@@ -1,8 +1,9 @@
 const express = require ('express');
 const router = express.Router();
 
-//tutaj dodajecie swoje routesy
+//tutaj dodajecie swoje routes
 router.use('/',require('./books'))
+router.use('/',require('./authors'))
 
 //wyrzuca stronę
 router.get('/',(req,res,next)=>{

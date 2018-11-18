@@ -1,1 +1,2 @@
-backend/db.js
+./backend/db.js
+./front/package-lock.json

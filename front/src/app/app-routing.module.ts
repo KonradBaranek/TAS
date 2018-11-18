@@ -1,3 +1,5 @@
+import { NewBookComponent } from './new-book/new-book.component';
+import { BookViewComponent } from './book-view/book-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
@@ -12,11 +14,13 @@ const routes: Routes = [
   { path: 'authors', component: AuthorsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: 'books', pathMatch: 'full' }
+  { path: '', redirectTo: 'books', pathMatch: 'full' },
+  { path: 'book', component: BookViewComponent },
+  { path: 'newbook', component: NewBookComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { } 
+export class AppRoutingModule { }

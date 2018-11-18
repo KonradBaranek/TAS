@@ -5,7 +5,7 @@ var BookSchema = new Schema(
   {
     isbn: {type: Number, required: true},
     title: {type: String, required: true},
-    authors: {type: [Number], required: false},
+    authors: {type: [String], required: false},
     cover: {type: String, required: false},
     price: {type: Number, required: true},
     description: {type: String, required: false},

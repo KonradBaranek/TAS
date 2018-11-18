@@ -1,19 +1,19 @@
 const router = require('express').Router()
 const Book = require('../models/book');
 
-router.post('/books/add', function(req, res, next){
+router.post('/books', function(req, res, next){
     Book.findOne({id: req.body.isbn}).then(function(book){
         if(book===null){
             Book.create(req.body).then(function(book){
                 res.status(200).send(book);
             }).catch(next);
         }else{
-            res.status(500).send({error:'Error: Book of that id already exists!!'});
+            res.status(500).send({error:'wrong isbn'});
         }
     });
 });
 
-router.get('/books/list', function(req, res, next){
+router.get('/books', function(req, res, next){
     Book.find({}).then(function(books){
         if(books.length === 0){
             res.status(404).send({error: 'Error: There are no books'})
