@@ -1,26 +1,18 @@
 const router = require('express').Router()
-const User = require('../models/user');
+const jwt = require('express-jwt');
+const auth = jwt({
+    secret: 'WORK_HARD',
+    userProperty: 'payload'
+  });
 
-router.post('/users/register', function(req, res, next){
-    User.findOne({id: req.body.email}).then(function(user){
-        if(user===null){
-            User.create(req.body).then(function(user){
-                res.status(200).send(user);
-            }).catch(next);
-        }else{
-            res.status(500).send({error:'Error: User of that email already exists!'});
-        }
-    });
-});
+const ctrlProfile = require('../controllers/profile');
+const ctrlAuth = require('../controllers/authentication');
 
-router.get('/users/list', function(req, res, next){
-    User.find({}).then(function(users){
-        if(users.length === 0){
-            res.status(404).send({error: 'Error: There are no users'})
-        }else{
-            res.status(200).send(users);
-        }
-    });
-});
+// profile
+router.get('/profile', auth, ctrlProfile.profileRead);
+
+// authentication
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
 
 module.exports = router;

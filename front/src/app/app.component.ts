@@ -8,6 +8,5 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'front';
-  navCollapsed = true;
   constructor(_router : Router){}
 }
