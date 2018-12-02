@@ -7,13 +7,12 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema(
   {
     name: {type: String, trim: true, required: true},
-    password: {type: String, required: true},
     firstname: {type: String, trim: true, required: false},
     lastname: {type: String, trim: true, required: false},
     email: {type: String, unique: true, trim: true, required: true},
     phone: {type: Number, required: false},
     address: {type: String, trim: true, required: false},
-    access: {type: String, enum:["user","admin"], required: true},
+    access: {type: String, enum:["user","admin"], required: false},
     IDOrders: {type: [Number], required: false},
     hash: String,
     salt: String

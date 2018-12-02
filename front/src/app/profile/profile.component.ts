@@ -10,9 +10,9 @@ export class ProfileComponent {
 
   constructor() {}
 
-  private auth: AuthenticationService
-  
-  ngOnInit() {    
+  private auth: AuthenticationService;
+
+  ngOnInit() {
     this.auth.profile().subscribe(user => {
       this.details = user;
     }, (err) => {
