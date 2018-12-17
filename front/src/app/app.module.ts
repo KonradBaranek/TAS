@@ -14,16 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
-
-const routes: Routes = [
-  { path: 'contact', component: ContactComponent },
-  { path: 'books', component: BooksComponent },
-  { path: 'authors', component: AuthorsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: 'books', pathMatch: 'full' },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
-];
+import { NewBookComponent } from './new-book/new-book.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BookViewComponent } from './book-view/book-view.component';
 
 
 @NgModule({
@@ -33,7 +26,9 @@ const routes: Routes = [
     BooksComponent,
     AuthorsComponent,
     LoginComponent,
+    NewBookComponent,
     RegisterComponent,
+    BookViewComponent,
     ProfileComponent
   ],
   imports: [
@@ -42,7 +37,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule
   ],
   providers: [AuthenticationService,
     AuthGuardService],

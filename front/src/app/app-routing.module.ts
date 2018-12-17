@@ -7,6 +7,8 @@ import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   { path: 'contact', component: ContactComponent },
@@ -16,7 +18,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: 'book', component: BookViewComponent },
-  { path: 'newbook', component: NewBookComponent }
+  { path: 'newbook', component: NewBookComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

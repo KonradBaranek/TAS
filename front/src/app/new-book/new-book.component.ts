@@ -24,7 +24,7 @@ export class NewBookComponent implements OnInit {
 
   constructor(private booksService: BooksService) {}
 
-  book = {
+  book: any = {
     isbn: 0,
     title: "xd",
     authors: "",

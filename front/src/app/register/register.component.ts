@@ -19,7 +19,7 @@ export class RegisterComponent {
 
   register() {
     console.log("registered: ",this.credentials);
-    this.auth.register(this.credentials).subscribe(() => {
+    this.auth.register(this.credentials).subscribe((res) => {
       this.router.navigateByUrl('/profile');
     }, (err) => {
       console.error(err);
