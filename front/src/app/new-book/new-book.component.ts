@@ -46,13 +46,13 @@ export class NewBookComponent implements OnInit {
 
   ngOnInit() {
     this.booksService.getAllAuthorsNames().subscribe(res => {
-      this.authorsNames = res.map(e => `${e.name} ${e.surname}`);
+      this.authorsNames = (res as Array<any>).map(e => `${e.name} ${e.surname}`);
       this.authors = res;
     });
   }
 
   validateISBN(popover) {
-    if (this.book != null && (this.book.isbn.toString().length === 13 || (this.book.isbn.toString().length === 10)) {
+    if (this.book != null && (this.book.isbn.toString().length === 13 || (this.book.isbn.toString().length === 10))) {
       this.valid.isbn = true;
       popover.close();
     } else {
