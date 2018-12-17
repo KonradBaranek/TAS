@@ -27,7 +27,7 @@ export class NewBookComponent implements OnInit {
   book = {
     isbn: 0,
     title: "xd",
-    authors: [],
+    authors: "",
     cover: "https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png",
     price: 0.0,
     description: "",
@@ -64,7 +64,7 @@ export class NewBookComponent implements OnInit {
   save() {
     console.log('authors', this.authors);
     let tmp = this.book.authors;
-    this.book.authors = [this.authors.find(e => `${e.name} ${e.surname}` === this.book.authors)._id];
+    this.book.authors = this.authors.find(e => `${e.name} ${e.surname}` == this.book.authors)._id;
     this.booksService.saveBook(this.book).subscribe(res => {
       this.book = res;
       this.book.authors = tmp;
