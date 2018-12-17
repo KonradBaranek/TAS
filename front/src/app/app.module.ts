@@ -1,7 +1,8 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { Routes, RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactComponent } from './contact/contact.component';
@@ -10,8 +11,20 @@ import { AuthorsComponent } from './authors/authors.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BookViewComponent } from './book-view/book-view.component';
-import { NewBookComponent } from './new-book/new-book.component';
+import { AuthenticationService } from './authentication.service';
+import { AuthGuardService } from './auth-guard.service';
+import { ProfileComponent } from './profile/profile.component';
+
+const routes: Routes = [
+  { path: 'contact', component: ContactComponent },
+  { path: 'books', component: BooksComponent },
+  { path: 'authors', component: AuthorsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: 'books', pathMatch: 'full' },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
+];
+
 
 @NgModule({
   declarations: [
@@ -21,18 +34,18 @@ import { NewBookComponent } from './new-book/new-book.component';
     AuthorsComponent,
     LoginComponent,
     RegisterComponent,
-    BookViewComponent,
-    NewBookComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [AuthenticationService,
+    AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

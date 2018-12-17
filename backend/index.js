@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const port = 3000
+const passport = require('passport');
+
 
 const mongoose = require('mongoose')
 //Zajrzyjcie do pliku db.js tam wpiszcie link do bazy
@@ -12,11 +14,15 @@ var db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
+require('./config/passport');
+app.use(passport.initialize());
+
 app.use(express.static('public'))
 
 app.use(bodyParser.json())
 
 app.use('/',require('./routes/routes'))
+
 
 app.use(function(err, req, res, next){
     console.log(err);
