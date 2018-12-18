@@ -10,7 +10,9 @@ export class ProfileComponent {
 
   constructor(private auth: AuthenticationService) {}
 
-  
+  logout(){
+    this.auth.logout();
+  }
 
   ngOnInit() {
     this.auth.profile().subscribe(user => {
