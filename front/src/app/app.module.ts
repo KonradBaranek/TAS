@@ -12,6 +12,9 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookViewComponent } from './book-view/book-view.component';
 import { NewBookComponent } from './new-book/new-book.component';
+import { BucketComponent } from './bucket/bucket.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { NewBookComponent } from './new-book/new-book.component';
     LoginComponent,
     RegisterComponent,
     BookViewComponent,
-    NewBookComponent
+    NewBookComponent,
+    BucketComponent,
+    MakeOrderComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

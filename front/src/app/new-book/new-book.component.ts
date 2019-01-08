@@ -46,13 +46,13 @@ export class NewBookComponent implements OnInit {
 
   ngOnInit() {
     this.booksService.getAllAuthorsNames().subscribe(res => {
-      this.authorsNames = res.map(e => `${e.name} ${e.surname}`);
+      //this.authorsNames = res.map(e => `${e.name} ${e.surname}`);
       this.authors = res;
     });
   }
 
   validateISBN(popover) {
-    if (this.book != null && (this.book.isbn.toString().length === 13 || (this.book.isbn.toString().length === 10)) {
+    if (this.book != null && (this.book.isbn.toString().length === 13 || (this.book.isbn.toString().length === 10))) {
       this.valid.isbn = true;
       popover.close();
     } else {
@@ -63,10 +63,10 @@ export class NewBookComponent implements OnInit {
 
   save() {
     console.log('authors', this.authors);
-    let tmp = this.book.authors;
-    this.book.authors = [this.authors.find(e => `${e.name} ${e.surname}` === this.book.authors)._id];
+    let tmp = this.book.authors; 
+    //this.book.authors = [this.authors.find(e => `${e.name} ${e.surname}` === this.book.authors)._id];
     this.booksService.saveBook(this.book).subscribe(res => {
-      this.book = res;
+      //this.book = res;
       this.book.authors = tmp;
     });
   }

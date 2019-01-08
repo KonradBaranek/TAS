@@ -19,4 +19,9 @@ export default class BooksService {
   getAllAuthorsNames() {
     return this._http.get('http://localhost:3000/authors');
   }
+
+  getBook(isbn: any) {
+    return this._http.get('http://localhost:3000/books/');
+  }
+
 }

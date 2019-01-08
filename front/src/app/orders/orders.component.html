@@ -1,0 +1,66 @@
+<div class="container">
+    <h2>Zamówienia</h2>
+    <div>
+        <div *ngFor="let order of orders; let i = index">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    {{order.IDOrder}}
+                </div>
+                <div class="col-3">
+                    {{order.date}}
+                </div>
+                <div class="col">
+                    {{order.status}}
+                </div>
+              <div class="col">
+                  <p>{{order.name}}</p>
+                  <p>{{order.surname}}</p>
+              </div>
+              <div class="col">
+                  {{order.address}}
+              </div>
+              <div class="col-2">
+                    dostawa: {{order.delivery.name}} ({{order.delivery.price}} PLN)
+                </div>
+              <div class="col">
+                    {{order.totalPrice}} PLN
+                </div>
+              <div class="col">
+                  <div class="btn-group">
+                  <button class="btn btn-sm btn-outline-secondary" (click)="setDetails(order.IDOrder)"> Szczegóły </button>
+                </div>
+                </div>
+              </div>
+              <div *ngIf="openDetails==order.IDOrder">
+                <div *ngFor="let book of order.books">
+                    <div class="row">
+                        <div class="col">
+                                <img style="width: 100px; height: 150px" src="../../assets/covers/{{book.cover}}" class="card-img-top">
+                        </div>
+                        <div class="col">
+                                ISBN: {{book.isbn}}
+                            </div>
+                        <div class="col">
+                            {{book.title}}
+                        </div>
+                        <div class="col">
+                            {{book.authors}}
+                        </div>
+                        <div class="col">
+                            cena: {{book.price}} PLN
+                        </div>
+                        <div class="col">
+                                {{book.amount}} szt.
+                            </div>
+                </div>
+            </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+     
+</div>
