@@ -3,14 +3,14 @@
         <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
     <div class="form-group">
         <label for="username">E-mail</label>
-        <input type="text" class="form-control" [(ngModel)]="credentials.email" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <input type="text" class="form-control" [(ngModel)]="credentials.email"/>
+        <div *ngIf="submitted && credentials.email.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">Username is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" [(ngModel)]="credentials.password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <input type="password" class="form-control" [(ngModel)]="credentials.password"/>
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
         </div>

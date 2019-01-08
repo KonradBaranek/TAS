@@ -7,14 +7,34 @@
 
       <div class="form-horizontal">
         <div class="form-group">
-          <label class="col-sm-3 control-label">Full name</label>
+          <label class="col-sm-3 control-label">Account name</label>
           <p class="form-control-static">{{ details?.name }}</p>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Email</label>
           <p class="form-control-static">{{ details?.email }}</p>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="logout()">logout</button>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">First Name</label>
+          <p class="form-control-static">{{ details?.firstname }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Last Name</label>
+          <p class="form-control-static">{{ details?.lastname }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Phone</label>
+          <p class="form-control-static">{{ details?.phone }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Address</label>
+          <p class="form-control-static">{{ details?.address }}</p>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="logout()">logout</button> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+        <button type="submit" class="btn btn-primary" (click)="logout()">edit</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+        <button type="submit" class="btn btn-primary" (click)="logout()">delete</button>        
       </div>
 
     </div>

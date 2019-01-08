@@ -11,7 +11,12 @@ export class RegisterComponent {
   credentials: TokenPayload = {
     email: '',
     name: '',
-    password: ''
+    password: '',
+    firstname: '',
+    lastname: '',
+    address: '',
+    phone: '',
+    access: "user"
   };
 
   constructor(private auth: AuthenticationService,
@@ -20,7 +25,7 @@ export class RegisterComponent {
   register() {
     console.log("registered: ",this.credentials);
     this.auth.register(this.credentials).subscribe((res) => {
-      this.router.navigateByUrl('/profile');
+      this.router.navigateByUrl('/login');
     }, (err) => {
       console.error(err);
     });

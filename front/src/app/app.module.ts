@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewBookComponent } from './new-book/new-book.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookViewComponent } from './book-view/book-view.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { BookViewComponent } from './book-view/book-view.component';
     NewBookComponent,
     RegisterComponent,
     BookViewComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

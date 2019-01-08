@@ -8,8 +8,13 @@ export interface UserDetails {
   _id: string;
   email: string;
   name: string;
+  firstname: string;
+  lastname: string;
+  address: string;
+  phone: string;
   exp: number;
   iat: number;
+  access: string;
 }
 
 interface TokenResponse {
@@ -19,7 +24,12 @@ interface TokenResponse {
 export interface TokenPayload {
   email: string;
   password: string;
-  name?: string;
+  name: string;
+  firstname: string;
+  lastname: string;
+  address: string;
+  phone: string;
+  access: string;
 }
 
 @Injectable()
@@ -46,6 +56,7 @@ export class AuthenticationService {
     if (token) {
       payload = token.split('.')[1];
       payload = window.atob(payload);
+      console.log('-->',payload)
       return JSON.parse(payload);
     } else {
       return null;
@@ -61,13 +72,18 @@ export class AuthenticationService {
     }
   }
 
-  private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?: TokenPayload): Observable<any> {
+  private request(method: 'post'|'get'|'delete'|'put', type: 'login'|'register'|'profile'|'edit'|'remove', user?): Observable<any> {
     let base;
 
     if (method === 'post') {
 
       base = this.http.post(`http://localhost:3000/${type}`, user);
-    } else {
+    } else if(method === 'delete'){
+      base = this.http.delete(`http://localhost:3000/${type}`, user);
+    } else if(method === 'put'){
+      base = this.http.put(`http://localhost:3000/${type}`, user);
+    }
+    else {
       base = this.http.get(`http://localhost:3000/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
 
@@ -89,7 +105,17 @@ export class AuthenticationService {
     return this.request('post', 'register', user);
   }
 
-  public login(user: TokenPayload): Observable<any> {
+  public edit(user){
+    console.log("user->", user);
+    return this.request('put','edit', user)
+  }
+
+  public delete(user){
+    console.log("user->", user);
+    return this.request('delete','remove', user)
+  }
+
+  public login(user): Observable<any> {
     return this.request('post', 'login', user);
   }
 

@@ -7,12 +7,12 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema(
   {
     name: {type: String, trim: true, required: true},
-    firstname: {type: String, trim: true, required: false},
-    lastname: {type: String, trim: true, required: false},
+    firstname: {type: String, trim: true, required: true},
+    lastname: {type: String, trim: true, required: true},
     email: {type: String, unique: true, trim: true, required: true},
-    phone: {type: Number, required: false},
-    address: {type: String, trim: true, required: false},
-    access: {type: String, enum:["user","admin"], required: false},
+    phone: {type: Number, required: true},
+    address: {type: String, trim: true, required: true},
+    access: {type: String, enum:["user","admin"], required: true},
     IDOrders: {type: [Number], required: false},
     hash: String,
     salt: String
@@ -37,6 +37,7 @@ userSchema.methods.generateJwt = function() {
     _id: this._id,
     email: this.email,
     name: this.name,
+    access: this.access,
     exp: parseInt(expiry.getTime() / 1000),
   }, "WORK_HARD"); // WORK HARD IS A SECRET
 };

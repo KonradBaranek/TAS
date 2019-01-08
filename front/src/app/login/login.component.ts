@@ -28,7 +28,14 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   credentials: TokenPayload = {
     email: '',
-    password: ''
+    name: '',
+    password: '',
+    firstname: '',
+    lastname: '',
+    address: '',
+    phone: '',
+    access: 'user'
+
   };
 
   constructor(private auth: AuthenticationService, private router: Router) {}
