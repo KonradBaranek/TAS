@@ -9,13 +9,7 @@ import { AuthenticationService} from '../authentication.service';
 })
 export class EditComponent implements OnInit {
 
-    credentials = {
-      _id: '',
-      firstname: '',
-      lastname: '',
-      address: '',
-      phone: ''
-    };
+    credentials = this.auth.getUserDetails();
 
   edit() {
     console.log("edited: ",this.credentials);

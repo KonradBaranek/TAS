@@ -35,6 +35,31 @@ module.exports.register = function(req, res) {
     });
   
   };
+
+  module.exports.remove = function(req, res) {
+      
+    console.log("delete user ", req.body);
+    
+    var query = {'_id': req.body._id};
+    //req.newData = req.body;
+    User.findOneAndDelete(query, function(err, doc){
+    if (err) return res.send(500, { error: err });
+      return res.send({status: 200});
+    });
+  };
+
+  module.exports.update = function(req, res) {
+      
+    console.log("updated user", req.body);
+    
+    var query = {'_id': req.body._id};
+    //req.newData = req.body;
+    User.findOneAndUpdate(query, req.body, {upsert:false}, function(err, doc){
+    if (err) return res.send(500, { error: err });
+    return res.send({status: 200});
+});
+  
+  };
   
   module.exports.login = function(req, res) {
 

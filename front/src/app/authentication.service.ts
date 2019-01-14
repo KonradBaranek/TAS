@@ -76,10 +76,10 @@ export class AuthenticationService {
     let base;
 
     if (method === 'post') {
-
       base = this.http.post(`http://localhost:3000/${type}`, user);
     } else if(method === 'delete'){
-      base = this.http.delete(`http://localhost:3000/${type}`, user);
+      console.log('user<<<', user)
+      base = this.http.put(`http://localhost:3000/${type}`, user);
     } else if(method === 'put'){
       base = this.http.put(`http://localhost:3000/${type}`, user);
     }

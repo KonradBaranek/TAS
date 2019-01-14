@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService, UserDetails } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +9,19 @@ import { AuthenticationService, UserDetails } from '../authentication.service';
 export class ProfileComponent {
   details: UserDetails;
 
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService, private router: Router) {}
 
   logout(){
     this.auth.logout();
+  }
+
+  delete(){
+    console.log("deleted: ",this.auth.getUserDetails());
+    this.auth.delete(this.auth.getUserDetails()).subscribe((res) => {
+      this.router.navigateByUrl('/login');
+    }, (err) => {
+      console.error(err);
+    });
   }
 
   ngOnInit() {
