@@ -1,45 +1,56 @@
 <h2>Register</h2>
 <div>
-        <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
-    <div class="form-group">
-        <label for="email">E-Mail</label>
-        <input required minlength="2" type="text" class="form-control" [(ngModel)]="credentials.email" placeholder="E-mail" />
-        <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">E-Mail is required</div>
-        </div> -->
+    <div class="form-group" [class.has-error]="email.invalid && email.touched">
+        <label for="email" class="control-label">E-Mail</label>
+        <input required type="text" class="form-control" [(ngModel)]="credentials.email" placeholder="Your E-mail" #email="ngModel"  />
+        <span class="help-block" *ngIf="email.invalid && email.touched">
+            E-mail is required
+        </span>
     </div>
-    <div class="form-group">
-        <label for="name">Username</label>
-        <input required minlength="2" type="text" class="form-control" [(ngModel)]="credentials.name" placeholder="Username" />
-        <!-- <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-            <div *ngIf="f.name.errors.required">name is required</div>
-        </div> -->
+    <div class="form-group" [class.has-error]="name.invalid && name.touched">
+        <label for="name" class="control-label">Username</label>
+        <input required type="text" class="form-control" [(ngModel)]="credentials.name" placeholder="Your Username" #name="ngModel" />
+        <span class="help-block" *ngIf="name.invalid && name.touched">
+            Username is required
+        </span>
     </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input required minlength="6" type="password" [(ngModel)]="credentials.password" class="form-control" placeholder="Password" />
-        <!--<div *ngIf="credentials.password.required">Password is required</div>
-        <div *ngIf="credentials.password.minlength">Password must be at least 6 characters</div>
-        </div>-->
+    <div class="form-group" [class.has-error]="password.invalid && password.touched" [class.has-success]="password.valid">
+        <label for="password" class="control-label">Password</label>
+        <input required minlength="6" type="password" [(ngModel)]="credentials.password" class="form-control" placeholder="Your Password" #password="ngModel" />
+        <span class="help-block" *ngIf="password.invalid && password.touched">
+            Password is required and must be at least 6 characters long
+        </span>
     </div>
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="firstname.invalid && firstname.touched">
         <label for="firstname">First Name</label>
-        <input required minlength="2" type="text" [(ngModel)]="credentials.firstname" class="form-control" placeholder="First Name"  />
+        <input required type="text" [(ngModel)]="credentials.firstname" class="form-control" placeholder="Your First Name" #firstname="ngModel" />
+        <span class="help-block" *ngIf="firstname.invalid && firstname.touched">
+            First name is required
+        </span>    
     </div>
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="lastname.invalid && lastname.touched">
         <label for="lastname">Last Name</label>
-        <input required minlength="2" type="text" [(ngModel)]="credentials.lastname" class="form-control"  placeholder="Last Name" />
+        <input required type="text" [(ngModel)]="credentials.lastname" class="form-control"  placeholder="Your Last Name" #lastname="ngModel" />
+        <span class="help-block" *ngIf="lastname.invalid && lastname.touched">
+            Last name is required
+        </span>    
     </div>
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="phone.invalid && phone.touched">
         <label for="phone">Phone</label>
-        <input required minlength="2" type="text" [(ngModel)]="credentials.phone" class="form-control" placeholder="Phone" />
+        <input required type="text" [(ngModel)]="credentials.phone" class="form-control" placeholder="Your Phone" #phone="ngModel" />
+        <span class="help-block" *ngIf="phone.invalid && phone.touched">
+            Phone is required
+        </span>         
     </div>
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="address.invalid && address.touched">
         <label for="address">Address</label>
-        <input required minlength="2" type="text" [(ngModel)]="credentials.address" class="form-control" placeholder="Address" />
+        <input required type="text" [(ngModel)]="credentials.address" class="form-control" placeholder="Your Address" #address="ngModel" />
+        <span class="help-block" *ngIf="address.invalid && address.touched">
+            Address is required
+        </span>     
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
+        <button type="submit" class="btn btn-primary" [disabled]="email.invalid || name.invalid || password.invalid || firstname.invalid || lastname.invalid || phone.invalid || address.invalid"  (click)="register()">Register</button>
         <!-- <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> -->
         <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
     </div>
