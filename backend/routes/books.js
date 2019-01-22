@@ -25,10 +25,9 @@ router.get('/books', function(req, res, next){
 
 router.get('/filter', function(req, res, next){
     Book.find({
-        title: {$regex: "req.query.search", $options: "i"},
-        /*authors: {$regex: req.query.search, $options: 'i'},
-        price: {$regex: req.query.search, $options: 'i'},
-        genre: {$regex: req.query.search, $options: 'i'}*/
+         title: new RegExp(req.query.search),
+        /*authors: new RegExp(req.query.search),
+        genre: new RegExp(req.query.search)*/
     }).limit(5).then(function(books){
         console.log(books)
         res.status(200).send(books);
