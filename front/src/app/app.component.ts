@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
+import BooksService  from './books/books.service'
+//import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,35 @@ import { AuthenticationService } from './authentication.service';
 })
 export class AppComponent {
   title = 'front';
-  constructor(_router : Router, public auth: AuthenticationService){}
+  key = "";
+  //number = 1;
+  //constructor(_router : Router, public auth: AuthenticationService){}
+  constructor(private _router : Router, private booksService: BooksService){}
+
+
+  onKey(key: string) {
+    this.key=key;
+    this._router.navigate(["/books"], {queryParams: {key: key}});
+  }
+
+  update(key: string) {
+    this.key=key;
+  }
+/*
+  next()
+  {
+    this.number+=1;
+    this._router.navigate(["/books"], {queryParams: {number: this.number}});
+    console.log(this.number);
+  }
+
+  previous()
+  {
+    if(this.number>1)
+    {
+      this.number-=1;
+      this._router.navigate(["/books"], {queryParams: {number: this.number}});
+      console.log(this.number);
+    }
+  }*/
 }

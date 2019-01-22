@@ -7,7 +7,8 @@ const passport = require('passport');
 
 const mongoose = require('mongoose')
 //Zajrzyjcie do pliku db.js tam wpiszcie link do bazy
-mongoose.connect(require('./db'))
+//mongoose.connect(require('./db'))
+mongoose.connect('mongodb://admin_db:Admin1@ds045679.mlab.com:45679/tsa_project')
 mongoose.Promise = global.Promise
 
 var db = mongoose.connection
