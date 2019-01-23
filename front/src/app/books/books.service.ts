@@ -24,4 +24,7 @@ export default class BooksService {
     return this._http.get('http://localhost:3000/books/');
   }
 
+  getFilterBooks(query: string){
+    return this._http.get(`http://localhost:3000/filter?search=${query}`);
+  }
 }
