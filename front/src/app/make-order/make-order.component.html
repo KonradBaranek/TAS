@@ -1,0 +1,40 @@
+<div class="container" [hidden]="!newOrder">
+<h2>Zamówienie</h2>
+ <form> <!--<form (ngSubmit)="onSubmit()"> -->
+    <div class="form-group">
+        <label for="name">Imię</label>
+        <input type="text"  class="form-control"  [(ngModel)] = "order.name" name = "name" placeholder="Imię" (change)="validateName()"/>
+        <small *ngIf="!validName">Wpisz poprawne imię</small>
+    </div>
+    <div class="form-group">
+        <label for="surname">Nazwisko</label>
+        <input type="text"  class="form-control" [(ngModel)] = "order.surname" name = "surname" placeholder="Nazwisko" (change)="validateSurname()"/>
+        <small *ngIf="!validSurname">Wpisz poprawne nazwisko</small>
+    </div>
+    <div class="form-group">
+        <label for="address">Adres</label>
+        <input type="text"  class="form-control" [(ngModel)] = "order.address" name = "address" placeholder="ul. Ulica 00-000 Miasto" (change)="validateAddress()" />
+        <small *ngIf="!validAddress">Wpisz poprawny adres</small>
+    </div>
+    <div class="form-group">
+      <label for="delivery">Sposób dostawy</label>
+      <div class="form group">
+      <select name="delivery" class="form-control" (change)="setDelivery($event)">
+          <option *ngFor="let del of deliveries" [value]="del.name"> {{del.name}} ({{del.price}} PLN)</option>
+      </select>
+      </div>
+    </div>
+    <div class="form-group">
+    <label for="price">Cena</label>
+    <p> {{order.totalPrice}} PLN</p>
+    </div>
+    <div class="btn-group">
+        <button [disabled]="loading" class="btn btn-secondary" (click)="makeOrder()">Zapłać i złóż zamówienie</button>
+        <a routerLink="/books"><button class="btn btn-secondary" > Anuluj </button></a>
+    </div>
+</form>
+</div>
+<div class="container text-center" *ngIf="orderPosted">
+    <h3>Twoje zamówienie zostało przyjęte do realizacji! </h3>
+    <h4>Numer Twojego zamówienia: {{order.IDOrder}}</h4>
+</div>

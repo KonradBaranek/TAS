@@ -19,6 +19,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BookViewComponent } from './book-view/book-view.component';
 import { EditComponent } from './edit/edit.component';
 
+import { BucketComponent } from './bucket/bucket.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,11 @@ import { EditComponent } from './edit/edit.component';
     RegisterComponent,
     BookViewComponent,
     ProfileComponent,
-    EditComponent
+    EditComponent,
+    NewBookComponent,
+    BucketComponent,
+    MakeOrderComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

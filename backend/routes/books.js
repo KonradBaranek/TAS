@@ -23,4 +23,14 @@ router.get('/books', function(req, res, next){
     });
 });
 
+router.get('/books/:isbn', function(req, res, next){
+    Book.findOne().then(function(books){
+        if(books.length === 0){
+            res.status(404).send({error: 'Error: There are no books'})
+        }else{
+            res.status(200).send(books);
+        }
+    });
+});
+
 module.exports = router;
