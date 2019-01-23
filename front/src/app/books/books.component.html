@@ -3,7 +3,7 @@
     <div *ngFor="let book of books" class="col-md-4 box-shadow my-1">
       <div class="card text-center">
         <div class="card-body">
-            <img style="width: 200px; height: 300px" src="../../assets/covers/{{book.cover}}" class="card-img-top">
+            <img style="width: 200px; height: 300px" src="{{book.cover}}" class="card-img-top">
             <span class="card-text">
               <h3>
                 {{book.title}}
