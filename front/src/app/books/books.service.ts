@@ -16,6 +16,10 @@ export default class BooksService {
     return this._http.post('http://localhost:3000/books', book);
   }
 
+  saveAuthor(author: any){
+    return this._http.post('http://localhost:3000/authors', author);
+  }
+
   getAllAuthorsNames() {
     return this._http.get('http://localhost:3000/authors');
   }

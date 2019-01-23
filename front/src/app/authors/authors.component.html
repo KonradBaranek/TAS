@@ -1,3 +1,21 @@
-<p>
-  authors works!
-</p>
+<h2>Authors:</h2>
+<div class="container my-2 mx-auto">
+    <div class="row">
+      <div *ngFor="let author of authors" class="col-md-4 box-shadow my-1">
+        <div class="card">
+            <img style="height: 250px" src="https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png" class="card-img-top">
+            <div class="card-body">
+                <span class="card-text">
+                  <h3>
+                    {{author.name}} {{author.surname}}
+                  </h3>
+                  {{author.dateOfBirth}} - {{author.dateOfDeath}}
+                  {{author.description}}
+                </span>
+              </div>
+          </div>
+          
+        </div>
+      
+      </div> 
+    </div>

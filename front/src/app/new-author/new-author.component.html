@@ -1,0 +1,62 @@
+<div class="container my-3">
+  <div class="form">
+    <div class="form-group row">
+      <label for="example-text-input" class="col-2 col-form-label">Imię autora:</label>
+      <div class="col-10">
+        <input class="form-control" type="text" id="example-text-input" [(ngModel)] = "author.name">
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="example-text-input" class="col-2 col-form-label">Nazwisko autora:</label>
+      <div class="col-10">
+        <ng-template #popContent>Podany autor już istnieje</ng-template>
+        <input class="form-control" type="text"  [ngbPopover]="popContent"
+        triggers="manual" #p1="ngbPopover" (focusout)="validateSurname(p1)"
+        [ngClass]="{ 'error' : !valid.surname}"
+        id="example-text-input" [(ngModel)] = "book.surname">
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="typeahead-focus" class="col-2 col-form-label">Gatunek:</label>
+        <div class="col-10">
+          <input  id="typeahead-focus"
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="author.genre"
+                  [ngbTypeahead]="searchGenre"
+                  (focus)="focusGenre$.next($event.target.value)"
+                  (click)="clickGenre$.next($event.target.value)"
+                  #instance="ngbTypeahead"
+                />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label  class="col-2 col-form-label">Data urodzin:</label>
+        <div class="col-10">
+          <input class="form-control" type="text" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"/>
+          <!-- <button (click)="d.toggle()">Toggle</button> -->
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label  class="col-2 col-form-label">Data śmierci:</label>
+        <div class="col-10">
+          <input class="form-control" type="text" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"/>
+          <!-- <button (click)="d.toggle()">Toggle</button> -->
+        </div>
+      </div>
+
+      <div class="form-group row">
+          <label class="col-2 col-form-label" >Opis:</label>
+          <div class="col-10">
+            <textarea class="form-control" cols="30" rows="10" [(ngModel)] = "author.description"></textarea>
+          </div>
+        </div>
+
+    <button class="btn btn-primary" (click)= "save()"> Zapisz </button>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { NewBookComponent } from './new-book/new-book.component';
+import { NewAuthorComponent } from './new-author/new-author.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: 'book', component: BookViewComponent },
   { path: 'newbook', component: NewBookComponent },
+  { path: 'newauthor', component: NewAuthorComponent },
   { path: 'edit', component: EditComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
 ];
