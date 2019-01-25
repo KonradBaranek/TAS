@@ -13,12 +13,15 @@ export class BooksComponent implements OnInit {
   
   books;
   filters;
+  number;
 
   ngOnInit() {
+
+    this.number = this._route.snapshot.queryParamMap.get("number");
+    
     const param = this._route.snapshot.queryParamMap.get("key");
-    //const number = this._route.snapshot.queryParamMap.get("number");
     if(param) {
-      this.booksService.getFilterBooks(param).subscribe(res=>{
+      this.booksService.getFilterBooksByTitle(param).subscribe(res=>{
         console.log(res)
         this.books = res;
       });
