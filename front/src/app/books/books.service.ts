@@ -9,6 +9,26 @@ export default class BooksService {
 
   constructor(private _http: HttpClient) { }
 
+  public books = {data: null};
+  
+  getSharedBooks(){
+    this.updateBooks(1);
+    return this.books;
+  }
+
+  updateBooks(pageNo){
+    console.log(pageNo)
+    this._http.get(`http://localhost:3000/books?${pageNo}=&size=2`).subscribe(res => {
+      this.books.data = res;
+    })
+  }
+
+  filterBooksByTitle(query: string){
+    this._http.get(`http://localhost:3000/filterByTitle?search=${query}`).subscribe(res =>{
+      this.books.data = res;
+    });
+  }
+
   getAllBooks() {
     return this._http.get('http://localhost:3000/books?pageNo=&size=12');
   }

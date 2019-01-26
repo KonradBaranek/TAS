@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import BooksService  from './books/books.service'
+
 //import { AuthenticationService } from './authentication.service';
 
 @Component({
@@ -9,6 +10,7 @@ import BooksService  from './books/books.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  //twój emitter do którego można subskrybować
   title = 'front';
   key = "";
   //value = "";
@@ -24,6 +26,7 @@ export class AppComponent {
 
   update(key: string) {
     this.key=key;
+    this.booksService.filterBooksByTitle(key);
   }
 /*
   getValue(value: string){
@@ -34,7 +37,9 @@ export class AppComponent {
   next()
   {
     this.number+=1;
-    console.log(this.number);
+    
+    this.booksService.updateBooks(this.number);
+    console.log(this.booksService.books);
   }
 
   previous()
@@ -43,6 +48,7 @@ export class AppComponent {
     {
       this.number-=1;
       console.log(this.number);
+      this.booksService.updateBooks(this.number);
     }
   }
 }
