@@ -24,7 +24,6 @@ app.use(bodyParser.json())
 
 app.use('/',require('./routes/routes'))
 
-
 app.use(function(err, req, res, next){
     console.log(err);
     res.status(422).send({error: err.message});

@@ -23,7 +23,7 @@
       </li>
     </ul>
   </div>
-  <div>
+  <div class="search-container">
     <div>
       <input #box (keyup.enter)="update(box.value)" (blur)="update(box.value)"
       type="text" placeholder="Wyszukaj" name="search">
@@ -41,4 +41,5 @@
   </li>
 </ul>
 </nav>
+
 <router-outlet></router-outlet>

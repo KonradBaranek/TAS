@@ -13,6 +13,7 @@ router.post('/books', function(req, res, next){
     });
 });
 
+/*
 router.get('/books', function(req, res, next){
     Book.find({}).limit(9).then(function(books){
         if(books.length === 0){
@@ -21,13 +22,53 @@ router.get('/books', function(req, res, next){
             res.status(200).send(books);
         }
     });
+});*/
+
+router.get('/books',(req,res) => {
+    var pageNo = parseInt(req.query.pageNo)
+    var size = parseInt(req.query.size)
+    var query = {}
+    if(pageNo < 0 || pageNo === 0) {
+          response = {"error" : true,"message" : "invalid page number, should start with 1"};
+          return res.json(response)
+    }
+    query.skip = size * (pageNo - 1)
+    query.limit = size
+
+         Book.find({},{},query,function(err,data) {
+           //fetch all data from collection.
+              if(err) {
+                response = {"error" : true,"message" : "Error fetching data"};
+                res.status(404).json(response);
+              } else {
+                response = {"error" : false,"message" : data};
+                res.status(200).json(response);
+              }
+
+          });
+  })
+
+router.get('/filterByTitle', function(req, res, next){
+    Book.find({
+         title: new RegExp(req.query.search)
+    }).limit(5).then(function(books){
+        console.log(books)
+        res.status(200).send(books);
+    });
 });
 
-router.get('/filter', function(req, res, next){
+router.get('/filterByAuthors', function(req, res, next){
     Book.find({
-         title: new RegExp(req.query.search),
-        /*authors: new RegExp(req.query.search),
-        genre: new RegExp(req.query.search)*/
+        authors: new RegExp(req.query.search)
+    }).limit(5).then(function(books){
+        console.log(books)
+        res.status(200).send(books);
+    });
+});
+
+router.get('/filterByGenre', function(req, res, next){
+    Book.find({
+        genre: new RegExp(req.query.search)
     }).limit(5).then(function(books){
         console.log(books)
         res.status(200).send(books);

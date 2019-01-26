@@ -27,7 +27,7 @@ export class BooksComponent implements OnInit {
       });
     }
     else{
-    this.booksService.getAllBooks().subscribe(res=>{
+    this.booksService.getAllBooks(this.number).subscribe(res=>{
       console.log(res)
       this.books = res;
     });

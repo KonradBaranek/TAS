@@ -9,8 +9,8 @@ export default class BooksService {
 
   constructor(private _http: HttpClient) { }
 
-  getAllBooks() {
-    return this._http.get('http://localhost:3000/books?pageNo=&size=12');
+  getAllBooks(number: Int16Array) {
+    return this._http.get('http://localhost:3000/books?pageNo='+number+'&size=12');
   }
 
   saveBook(book: any){
