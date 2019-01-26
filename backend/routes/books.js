@@ -15,7 +15,7 @@ router.post('/books', function(req, res, next){
 
 /*
 router.get('/books', function(req, res, next){
-    Book.find({}).limit(9).then(function(books){
+    Book.find({}).limit(2).then(function(books){
         if(books.length === 0){
             res.status(404).send({error: 'Error: There are no books'})
         }else{

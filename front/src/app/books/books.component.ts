@@ -16,21 +16,6 @@ export class BooksComponent implements OnInit {
   number;
 
   ngOnInit() {
-
-    this.number = this._route.snapshot.queryParamMap.get("number");
-    
-    const param = this._route.snapshot.queryParamMap.get("key");
-    if(param) {
-      this.booksService.getFilterBooksByTitle(param).subscribe(res=>{
-        console.log(res)
-        this.books = res;
-      });
-    }
-    else{
-    this.booksService.getAllBooks(this.number).subscribe(res=>{
-      console.log(res)
-      this.books = res;
-    });
-    }
+    this.books = this.booksService.getSharedBooks();
   }
 }
