@@ -29,13 +29,13 @@
         </li>
       
     </ul>
-  </div>
-  <div class="search-container">
-    <div>
-      <input #box (keyup.enter)="update(box.value)" (blur)="update(box.value)"
-      type="text" placeholder="Wyszukaj" name="search">
-      <button (click)="onKey(box.value)"><i class="fa fa-search"></i></button>
-    </div>
+    <div class="search-container">
+        <div>
+          <input #box (keyup.enter)="update(box.value)" (blur)="update(box.value)"
+          type="text" placeholder="Wyszukaj" name="search">
+          <button (click)="onKey(box.value)"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
   </div>
 </nav>
 <nav aria-label="Page navigation">

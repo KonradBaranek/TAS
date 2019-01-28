@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -7,6 +7,20 @@ import { HttpClient } from '@angular/common/http';
 export default class BooksService {
 
   constructor(private _http: HttpClient) { }
+
+  @Output() booksChange :EventEmitter<any> = new EventEmitter();
+
+  update(by: any){
+    if(by){
+      this.getFilterBooks(by).subscribe(res =>{
+        this.booksChange.emit(res);
+      })
+    }else {
+      this.getAllBooks().subscribe(res=>{
+        this.booksChange.emit(res);
+      })
+    }
+  }
 
   getAllBooks() {
     return this._http.get('http://localhost:3000/books');

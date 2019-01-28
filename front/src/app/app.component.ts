@@ -17,8 +17,7 @@ export class AppComponent {
 
 
   onKey(key: string) {
-    this.key=key;
-    this._router.navigate(["/books"], {queryParams: {key: key}});
+    this.booksService.update(key)
   }
 
   update(key: string) {
