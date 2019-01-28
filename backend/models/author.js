@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var AuthorSchema = new Schema(
   {
-    IDAuthor: {type: Number, required: false}, 
+    IDAuthor: {type: Number, required: true}, 
     name: {type: String, required: true, max: 50},
     surname: {type: String, required: true, max: 50},
     genre: {type: String,  enum: ["fantasy","mystery","romance","thriller","drama","adventure"],  required: false},
