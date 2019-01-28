@@ -10,7 +10,8 @@ var AuthorSchema = new Schema(
     genre: {type: String,  enum: ["fantasy","mystery","romance","thriller","drama","adventure"],  required: false},
     dateOfBirth: {type: Date, required: true},
     dateOfDeath: {type: Date, required: false},
-    descritpion: {type: String, required: false}
+    descritpion: {type: String, required: false},
+    cover: {type: String, required: false},
   }
 )
 
