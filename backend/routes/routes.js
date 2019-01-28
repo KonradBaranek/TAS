@@ -5,6 +5,7 @@ const router = express.Router();
 router.use('/',require('./books'))
 router.use('/',require('./authors'))
 router.use('/',require('./users'))
+router.use('/',require('./orders'))
 
 //wyrzuca stronę
 router.get('/',(req,res,next)=>{

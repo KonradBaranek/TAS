@@ -1,4 +1,4 @@
-import { NewBookComponent } from './new-book/new-book.component';
+import { NewBookComponent } from './new-book/new-book.component'; 
 import { NewAuthorComponent } from './new-author/new-author.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { NgModule } from '@angular/core';
@@ -11,6 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuardService } from './auth-guard.service';
 import { EditComponent } from './edit/edit.component';
+import { BucketComponent } from './bucket/bucket.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   { path: 'contact', component: ContactComponent },
@@ -23,7 +26,10 @@ const routes: Routes = [
   { path: 'newbook', component: NewBookComponent },
   { path: 'newauthor', component: NewAuthorComponent },
   { path: 'edit', component: EditComponent},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'bucket', component: BucketComponent },
+  { path: 'make-order', component: MakeOrderComponent },
+  { path: 'orders', component: OrdersComponent }
 ];
 
 @NgModule({

@@ -16,10 +16,14 @@ import { AuthGuardService } from './auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { NewAuthorComponent } from './new-author/new-author.component';
 import { NewBookComponent } from './new-book/new-book.component';
+import { NewAuthorComponent } from './new-author/new-author.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookViewComponent } from './book-view/book-view.component';
 import { EditComponent } from './edit/edit.component';
 
+import { BucketComponent } from './bucket/bucket.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,12 @@ import { EditComponent } from './edit/edit.component';
     RegisterComponent,
     BookViewComponent,
     ProfileComponent,
-    EditComponent
+    EditComponent,
+    NewBookComponent,
+    NewAuthorComponent,
+    BucketComponent,
+    MakeOrderComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

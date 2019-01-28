@@ -22,16 +22,16 @@ export class NewAuthorComponent implements OnInit {
   constructor(private booksService: BooksService) {}
 
   author: any = {
+    IDAuthor:"",
     name: "",
     surname: "",
     dateOfBirth: null,
     dateOfDeath: null,
     cover: "https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png",
     description: "",
-    genre: "fantasy",
+    genre: "fantasy"
 
   };
-
 
   public genres = ['fantasy', 'mystery', 'romance', 'thriller', 'drama', 'adventure'];
   public valid = {
@@ -41,15 +41,6 @@ export class NewAuthorComponent implements OnInit {
   ngOnInit() {
   }
 
-  validateSurname(popover) {
-    if (this.author != null) {
-      this.valid.surname = true;
-      popover.close();
-    } else {
-      popover.open();
-      this.valid.surname = false;
-    }
-  }
 
   save() {
    this.booksService.saveAuthor(this.author).subscribe(res => {
