@@ -18,10 +18,10 @@ export class BooksComponent implements OnInit {
   ngOnInit() {
     this.booksService.booksChange.subscribe(res => {
       console.log("books",res)
-      this.books = res;
+      this.books = res.message;
     });
     this.justAdded = -1;
-    this.booksService.update(null);
+    this.booksService.update(null, null);
   }
 
   public ifAdded(isbn) {

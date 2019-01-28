@@ -10,20 +10,20 @@ export default class BooksService {
 
   @Output() booksChange :EventEmitter<any> = new EventEmitter();
 
-  update(by: any){
+  update(by: any, page: number){
     if(by){
       this.getFilterBooks(by).subscribe(res =>{
         this.booksChange.emit(res);
       })
     }else {
-      this.getAllBooks().subscribe(res=>{
+      this.getAllBooks(page ? page : 1).subscribe(res=>{
         this.booksChange.emit(res);
       })
     }
   }
 
-  getAllBooks() {
-    return this._http.get('http://localhost:3000/books');
+  getAllBooks(pagenum) {
+    return this._http.get(`http://localhost:3000/books?pageNo=${pagenum}&size=12`);
   }
 
   saveBook(book: any){
@@ -40,5 +40,17 @@ export default class BooksService {
 
   getFilterBooks(query: string){
     return this._http.get(`http://localhost:3000/filter?search=${query}`);
+  }
+
+  getFilterBooksByTitle(query: string){
+    return this._http.get(`http://localhost:3000/filterByTitle?search=${query}`);
+  }
+
+  getFilterBooksByAuthors(query: string){
+    return this._http.get(`http://localhost:3000/filterByAuthors?search=${query}`);
+  }
+
+  getFilterBooksByGenre(query: string){
+    return this._http.get(`http://localhost:3000/filterByGenre?search=${query}`);
   }
 }

@@ -11,24 +11,23 @@ import BooksService  from './books/books.service'
 export class AppComponent {
   title = 'front';
   key = "";
-  //number = 1;
+  number = 1;
   //constructor(_router : Router, public auth: AuthenticationService){}
   constructor(private _router : Router, private booksService: BooksService){}
 
 
   onKey(key: string) {
-    this.booksService.update(key)
+    this.booksService.update(key,this.number)
   }
 
   update(key: string) {
     this.key=key;
   }
-/*
+
   next()
   {
     this.number+=1;
-    this._router.navigate(["/books"], {queryParams: {number: this.number}});
-    console.log(this.number);
+    this.booksService.update(null,this.number)
   }
 
   previous()
@@ -36,8 +35,7 @@ export class AppComponent {
     if(this.number>1)
     {
       this.number-=1;
-      this._router.navigate(["/books"], {queryParams: {number: this.number}});
-      console.log(this.number);
+      this.booksService.update(null,this.number)
     }
-  }*/
+  }
 }
