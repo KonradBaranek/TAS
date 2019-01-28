@@ -15,6 +15,7 @@ import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { NewBookComponent } from './new-book/new-book.component';
+import { NewAuthorComponent } from './new-author/new-author.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookViewComponent } from './book-view/book-view.component';
 import { EditComponent } from './edit/edit.component';
@@ -36,6 +37,7 @@ import { OrdersComponent } from './orders/orders.component';
     ProfileComponent,
     EditComponent,
     NewBookComponent,
+    NewAuthorComponent,
     BucketComponent,
     MakeOrderComponent,
     OrdersComponent
