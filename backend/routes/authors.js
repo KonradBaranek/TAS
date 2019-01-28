@@ -12,7 +12,7 @@ router.get('/authors', function(req, res, next){
 });
 
 router.get('/authors/:IDAuthor', function(req, res, next){
-    Author.find({}).then(function(authors){
+    Author.findOne().then(function(authors){
         if(authors.length === 0){
             res.status(404).send({error: 'Error: There are no Authors with selected IDAuthor'})
         }else{
