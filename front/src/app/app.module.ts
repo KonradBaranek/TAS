@@ -14,7 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
+import { NewAuthorComponent } from './new-author/new-author.component';
 import { NewBookComponent } from './new-book/new-book.component';
+import { NewAuthorComponent } from './new-author/new-author.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookViewComponent } from './book-view/book-view.component';
 import { EditComponent } from './edit/edit.component';
@@ -30,12 +32,14 @@ import { OrdersComponent } from './orders/orders.component';
     BooksComponent,
     AuthorsComponent,
     LoginComponent,
+    NewAuthorComponent,
     NewBookComponent,
     RegisterComponent,
     BookViewComponent,
     ProfileComponent,
     EditComponent,
     NewBookComponent,
+    NewAuthorComponent,
     BucketComponent,
     MakeOrderComponent,
     OrdersComponent
