@@ -1,2 +1,2 @@
 # TAS
-Ksiegarnia internetowa
+Księgarnia internetowa

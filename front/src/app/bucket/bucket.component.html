@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Koszyk</h2>
+    <div>
+        <div *ngFor="let book of list">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                    <div class = "col">
+                            <img style="width: 100px; height: 150px" src="{{book.cover}}" class="card-img-top">
+                    </div>
+              <div class="col">
+                  {{book.title}}
+              </div>
+              <div class="col">
+                {{book.authors}}
+            </div>
+              <div class="col">
+                <input type="number"  [(ngModel)]="book.amount" (input)="setAmount(book)" min="1"/>
+              </div>
+              <div class="col">
+                  {{book.price * book.amount}}
+              </div>
+              <div class="col">
+                  <button class="btn btn-outline-secondary" (click)="delete(book)"> Usuń </button>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <h4 *ngIf="price>0">Cena: {{price}}</h4>
+          <h6 *ngIf="price==0">Nie masz żadnych książek w koszyku :( </h6>
+
+      </div>
+      <a *ngIf="price>0" routerLink="/make-order"><button class="btn btn-secondary" > Idź do zamówienia</button></a>
+</div>

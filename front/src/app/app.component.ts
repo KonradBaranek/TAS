@@ -10,29 +10,16 @@ import BooksService  from './books/books.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //twój emitter do którego można subskrybować
   title = 'front';
-  key = "";
-  number=1;
+  number = 1;
+   //constructor(_router : Router, public auth: AuthenticationService){}
   constructor(private _router : Router, private booksService: BooksService){}
-
-
-  onKey(key: string) {
-    this.key=key;
-    this._router.navigate(["/books"], {queryParams: {key: key}});
-  }
-
-  update(key: string) {
-    this.key=key;
-    this.booksService.filterBooksByTitle(key);
-  }
 
   next()
   {
     this.number+=1;
-    
-    this.booksService.updateBooks(this.number);
-    console.log(this.booksService.books);
+    this._router.navigate(["/books"], {queryParams: {number: this.number}});
+    this.booksService.update(null,this.number,null)
   }
 
   previous()
@@ -41,8 +28,7 @@ export class AppComponent {
     {
       this.number-=1;
       this._router.navigate(["/books"], {queryParams: {number: this.number}});
-      console.log(this.number);
-      this.booksService.updateBooks(this.number);
+      this.booksService.update(null,this.number,null)
     }
   }
 }

@@ -46,6 +46,7 @@ export class NewBookComponent implements OnInit {
 
   ngOnInit() {
     this.booksService.getAllAuthorsNames().subscribe(res => {
+      console.log('getAllAuthors: ', res);
       this.authorsNames = (res as Array<any>).map(e => `${e.name} ${e.surname}`);
       this.authors = res;
     });
@@ -66,7 +67,7 @@ export class NewBookComponent implements OnInit {
     let tmp = this.book.authors;
     this.book.authors = this.authors.find(e => `${e.name} ${e.surname}` == this.book.authors)._id;
     this.booksService.saveBook(this.book).subscribe(res => {
-      this.book = res;
+      //this.book = res;
       this.book.authors = tmp;
     });
   }
