@@ -1,14 +1,14 @@
 <div class="container my-2 mx-auto">
   <div class="navigatecontainer">
       <div class="dropDown">
-        <label for="dropDown">Wybierz kategorie</label>
+        <label class="labelDrop" for="dropDown">Wybierz kategorie: </label>
         <select name="dropDown" [(ngModel)]="dropDown" (ngModelChange)="change($event)">
           <option *ngFor="let key of items" [value]="key.value">{{ key.label }}</option>
         </select>
       </div>
       <div class="search-container">
-          <label for="dropDown">Wpisz szukanÄ… fraze</label>
-        <input #box (keyup.enter)="update(box.value)" (blur)="update(box.value)"
+          <label class= "labelSearch" for="searchbox">Wpisz szukaną frazę: </label>
+        <input class="searchbox" #box (keyup.enter)="update(box.value)" (blur)="update(box.value)"
           type="text" placeholder="Wyszukaj" name="search">
         <button (click)="onKey(box.value)"><i class="fa fa-search"></i></button>
       </div>

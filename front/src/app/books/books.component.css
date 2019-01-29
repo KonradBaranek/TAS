@@ -99,7 +99,7 @@ body {
 }
 
 .card{
-    background-color: #DFE3EE;
+    background-color: #ffffff;
 }
 
 .card-body{
@@ -107,4 +107,48 @@ body {
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
     border-radius: 5px;
+}
+
+.ng-untouched.ng-pristine.ng-valid{
+  width: 100px;
+  height: 30px;
+  margin-left: 24px;
+  margin-right: 10px;
+  border: 1px solid #000000;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 5px;
+}
+
+.ng-valid.ng-dirty.ng-touched{
+  width: 100px;
+  height: 30px;
+  margin-left: 24px;
+  margin-right: 10px;
+  border: 1px solid #000000;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 5px;
+}
+
+.searchbox{
+  width: 200px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 0px;
+  border: 1px solid #000000;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.labelDrop{
+  color: #000000;
+  font-size: 500;
+}
+
+.labelSearch{
+  color: #000000;
+  font-size: 500;
 }
